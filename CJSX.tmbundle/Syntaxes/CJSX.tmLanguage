@@ -86,24 +86,13 @@
 							</dict>
 							<key>match</key>
 							<string>(?x)
-									([^(), ]+)
-									\s+(=)\s+
-									(?:
-										((")[^"]*("))
-									  | ((')[^']*('))
-									)</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>[^(), ]+</string>
-							<key>name</key>
-							<string>variable.parameter.function.coffee</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>,</string>
-							<key>name</key>
-							<string>punctuation.separator.parameters.coffee</string>
+									([A-z]+)
+									(?:\s+(=)\s+
+										(?:
+											((")[^"]*("))
+											| ((')[^']*('))
+										)
+									)?</string>
 						</dict>
 					</array>
 				</dict>
@@ -528,11 +517,6 @@
 					<key>name</key>
 					<string>entity.name.function.coffee</string>
 				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>variable.parameter.function.coffee</string>
-				</dict>
 				<key>5</key>
 				<dict>
 					<key>name</key>
@@ -554,12 +538,10 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(describe|it|app\.(get|post|put|all|del|delete))</string>
-			<key>comment</key>
-			<string>Show well-known functions from Express and Mocha in Go To Symbol view</string>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>meta.function.symbols.coffee</string>
+			<string>support.function.tests.coffee</string>
 			<key>patterns</key>
 			<array>
 				<dict>
