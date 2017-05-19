@@ -7,7 +7,9 @@
 	<key>contactName</key>
 	<string>Ånthokolski</string>
 	<key>description</key>
-	<string>New shiny bundle for X.</string>
+	<string>A port of the sublime cjsx syntax for TextMate with some finetuning. 
+
+Github: https://github.com/dantiel/textmate-cjsx</string>
 	<key>name</key>
 	<string>CJSX</string>
 	<key>uuid</key>
