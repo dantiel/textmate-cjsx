@@ -83,16 +83,22 @@
 									<key>name</key>
 									<string>punctuation.definition.string.end.coffee</string>
 								</dict>
+								<key>9</key>
+								<dict>
+									<key>name</key>
+									<string>meta.delimiter.parameter.comma.coffee</string>
+								</dict>
 							</dict>
 							<key>match</key>
 							<string>(?x)
-									([A-z]+)
+									(@?[A-z]+)
 									(?:\s+(=)\s+
 										(?:
 											((")[^"]*("))
 											| ((')[^']*('))
 										)
-									)?</string>
+									)?
+									(,\s*)?</string>
 						</dict>
 					</array>
 				</dict>
@@ -610,6 +616,54 @@
 			<string>meta.class.coffee</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.coffee</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([_A-z\$][_A-z0-9]*)(?:\s+|\(\s*)(?!(?:is|or|and|isnt|if|in|for|else|then)\s)(?=[\(\{\[\/]|-?[\.0-9]|@?[_A-z\$]|'|\")</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.instance.coffee</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([\@][_A-z0-9\$]*)(?:\s+|\(\s*)(?!(?:is|or|and|isnt|if|in|for|else|then)\s)(?=[\(\{\[\/]|-?[\.0-9]|@?[_A-z\$]|'|\")</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.coffee</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([_A-z\$][_A-z0-9]*)(?=\()</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.instance.coffee</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([\@][_A-z0-9\$]*)(?=\()</string>
+		</dict>
+		<dict>
 			<key>match</key>
 			<string>\b(debugger|\\)\b</string>
 			<key>name</key>
@@ -970,7 +1024,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?:\s*=\s*)(")</string>
+					<string>(?&lt;=\=)\s*(")</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -989,12 +1043,10 @@
 							<string>string.quoted.double.punctuation.definition.end.coffee</string>
 						</dict>
 					</dict>
+					<key>name</key>
+					<string>string.quoted.double.coffee</string>
 					<key>patterns</key>
 					<array>
-						<dict>
-							<key>include</key>
-							<string>#double_quote</string>
-						</dict>
 						<dict>
 							<key>match</key>
 							<string>.*?</string>
@@ -1068,13 +1120,25 @@
 				</dict>
 			</array>
 		</dict>
+		<key>jsx-open-tag-closing-bracket</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[A-z]|\}|"|')&gt;</string>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.coffee</string>
+				</dict>
+			</array>
+		</dict>
 		<key>jsx-single-quoted-prop</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?:=)\s?*(')</string>
+					<string>(?&lt;=\=)\s*(')</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1084,7 +1148,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>'</string>
+					<string>(')</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1093,6 +1157,8 @@
 							<string>string.quoted.single.punctuation.definition.string.end.coffee</string>
 						</dict>
 					</dict>
+					<key>name</key>
+					<string>string.quoted.single.coffee</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -1125,6 +1191,11 @@
 					<key>name</key>
 					<string>entity.name.tag.coffee</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.coffee</string>
+				</dict>
 			</dict>
 			<key>end</key>
 			<string>(&lt;/)(\2)([^&gt;]*&gt;)|(\/&gt;)</string>
@@ -1139,6 +1210,11 @@
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.coffee</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.coffee</string>
 				</dict>
 				<key>4</key>
 				<dict>
@@ -1181,7 +1257,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\b([a-zA-Z_:][a-zA-Z_:0-9\-\.]*)(\s*(\=)\s*)</string>
+			<string>\b([a-zA-Z_:][a-zA-Z_:0-9\-\.]*)(\s*(\=))</string>
 			<key>name</key>
 			<string>variable.other.attribute.cjsx</string>
 		</dict>
@@ -1192,6 +1268,10 @@
 				<dict>
 					<key>include</key>
 					<string>#jsx-tag-attribute-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#jsx-open-tag-closing-bracket</string>
 				</dict>
 				<dict>
 					<key>include</key>

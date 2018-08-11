@@ -7,7 +7,7 @@
 	<key>contactName</key>
 	<string>Ånthokolski</string>
 	<key>description</key>
-	<string>A port of the sublime cjsx syntax for TextMate with some finetuning. 
+	<string>A port of the sublime CJSX syntax for TextMate with some finetuning. 
 
 Github: https://github.com/dantiel/textmate-cjsx</string>
 	<key>name</key>
